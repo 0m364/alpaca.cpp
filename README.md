@@ -60,6 +60,27 @@ cmake --build . --config Release
 - (You can add other launch options like `--n 8` as preferred onto the same line)
 - You can now type to the AI in the terminal and it will reply. Enjoy!
 
+## Building on Android (Termux)
+
+- Install [Termux](https://termux.dev/en/) on your Android device.
+- Open Termux and run the following commands to clone the repository, update packages, install dependencies, and build the project:
+
+```sh
+pkg install git
+git clone https://github.com/0m364/alpaca.cpp
+cd alpaca.cpp
+
+# Run the build script
+chmod +x build_termux.sh
+./build_termux.sh
+```
+
+- Download the weights via any of the links in "Get started" above, and save the file as `ggml-alpaca-7b-q4.bin` in the main Alpaca directory. You can use `wget` in Termux, or download it using your browser and copy it to the Termux storage.
+- Run the chat executable:
+```sh
+./chat
+```
+
 ## Credit
 
 This combines [Facebook's LLaMA](https://github.com/facebookresearch/llama), [Stanford Alpaca](https://crfm.stanford.edu/2023/03/13/alpaca.html), [alpaca-lora](https://github.com/tloen/alpaca-lora) and [corresponding weights](https://huggingface.co/tloen/alpaca-lora-7b/tree/main) by Eric Wang (which uses [Jason Phang's implementation of LLaMA](https://github.com/huggingface/transformers/pull/21955) on top of Hugging Face Transformers), and [llama.cpp](https://github.com/ggerganov/llama.cpp) by Georgi Gerganov. The chat implementation is based on Matvey Soloviev's [Interactive Mode](https://github.com/ggerganov/llama.cpp/pull/61) for llama.cpp. Inspired by [Simon Willison's](https://til.simonwillison.net/llms/llama-7b-m2) getting started guide for LLaMA. [Andy Matuschak](https://twitter.com/andy_matuschak/status/1636769182066053120)'s thread on adapting this to 13B, using fine tuning weights by [Sam Witteveen](https://huggingface.co/samwit/alpaca13B-lora). 
